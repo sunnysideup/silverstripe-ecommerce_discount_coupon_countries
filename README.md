@@ -4,7 +4,7 @@ ecommerce discount coupon
 
 This module extends the "discount coupon" functionality
 to e-commerce to add rules when discounts are distinct 
-for different counttries. This means that at the checkout page
+for different countries. This means that at the checkout page
 the customer will be asked to enter a discount
 coupon number and the system will check if the coupon is valid.
 On entering a correct number they will
@@ -13,9 +13,7 @@ receive a discount.
 Developers
 -----------------------------------------------
 Nicolaas [at] sunnysideup.co.nz
-Jeremy [at] burnbright.co.nz
-
-
+Marcel [at] sunnysideup.co.nz
 
 Documentation
 -----------------------------------------------
@@ -51,14 +49,5 @@ Installation Instructions
 (or similar) as necessary.
 In the _config/ folder of this module
 you can usually find some examples of config options (if any).
-
-3. Make sure that you add the `DiscountCouponModifier` as a Order Modifier in the 
-yml configs: 
-
-```yml
-    Order:
-      modifiers:
-        - DiscountCouponModifier
-```
 
 
