@@ -1,0 +1,18 @@
+# Dependencies
+Name: ecommerce_discount_coupon_countries
+After: 
+  - 'framework/*'
+  - 'cms/*'
+  - 'ecommerce_countries/*'
+  - 'ecommerce_discount_coupon/*'
+---
+#add to options
+DiscountCouponOption:
+  extensions:
+    - DiscountCouponOptionCountriesExtension
+
+#add to modifier
+DiscountCouponModifier:
+  extensions:
+    - DiscountCouponCountriesModifierExtension
+
