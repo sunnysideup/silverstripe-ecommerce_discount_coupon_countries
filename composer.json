@@ -1,0 +1,34 @@
+{
+    "name": "sunnysideup/ecommerce_discount_coupon_countries",
+    "type": "silverstripe-module",
+    "description": "Allows you to add silverstripe e-commerce discount vouchers to certain countries",
+    "keywords": [
+        "ecommerce",
+        "e-commerce",
+        "shop",
+        "discount coupon",
+        "discount",
+        "coupon",
+        "silverstripe",        
+        "EcommerceCountry",
+        "Countries",
+        "Country",
+        "Regions",
+        "Region"
+    ],
+    "license": "Sunny Side Up (BSD-3-Clause and CUSTOM)",
+    "authors": [
+        {
+            "name": "Nicolaas Francken",
+            "email": "modules@sunnysideup.co.nz",
+            "role": "lead developer"
+        }
+    ],
+    "require": {
+        "sunnysideup/ecommerce_discount_coupon": "*",
+        "sunnysideup/ecommerce_countries": "*"
+    },
+    "extra": {
+        "installer-name": "ecommerce_discount_coupon_countries"
+    }
+}
