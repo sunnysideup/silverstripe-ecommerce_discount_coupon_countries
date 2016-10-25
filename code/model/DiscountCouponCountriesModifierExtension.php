@@ -20,59 +20,56 @@ class DiscountCouponCountriesModifierExtension extends DataExtension
      * @return bool | null
      *
      */
-    function checkForExclusions($coupon)
+    public function checkForExclusions($coupon)
     {
         $countryCode = CountryPrice_EcommerceCountry::get_real_country();
-        if($countryCode) {
+        if ($countryCode) {
             $countryCode = $countryCode->Code;
             $includedCountries = $coupon->IncludedCountries();
             $excludedCountries = $coupon->ExcludedCountries();
 
             //first situation: no country information => ALLOW => return NULL to ignore this.
-            if($includedCountries->count() == 0 && $excludedCountries->count() == 0){
+            if ($includedCountries->count() == 0 && $excludedCountries->count() == 0) {
                 $this->owner->DebugString .= '--- no country rules apply ---';
                 return null;
             }
 
             //second situation: includes and excludes
-            if($includedCountries->count() > 0 && $excludedCountries->count() > 0){
+            if ($includedCountries->count() > 0 && $excludedCountries->count() > 0) {
                 $this->owner->DebugString .= '--- inclusions and exclusions apply - checking for '.$countryCode.' ---';
                 $returnFlag = true;
 
                 $includeArray = $includedCountries->column('Code');
-                if(in_array($countryCode, $includeArray)){
+                if (in_array($countryCode, $includeArray)) {
                     $returnFlag = null;
                 }
 
                 $excludeArray = $excludedCountries->column('Code');
-                if(in_array($countryCode, $excludeArray)) {
+                if (in_array($countryCode, $excludeArray)) {
                     $returnFlag = true;
                 }
 
                 return $returnFlag;
-
             }
 
             //third situation: is it included?
-            if($includedCountries->count() > 0){
+            if ($includedCountries->count() > 0) {
                 $this->owner->DebugString .= '--- inclusions apply - checking for '.$countryCode.' ---';
                 $includeArray = $includedCountries->column('Code');
-                if(in_array($countryCode, $includeArray)) {
+                if (in_array($countryCode, $includeArray)) {
                     return null;
-                }
-                else {
+                } else {
                     return true;
                 }
             }
 
             //fourth situation: is it excluded?
-            if($excludedCountries->count() > 0){
+            if ($excludedCountries->count() > 0) {
                 $this->owner->DebugString .= '--- exclusions apply - checking for '.$countryCode.' ---';
                 $excludeArray = $excludedCountries->column('Code');
-                if(in_array($countryCode, $excludeArray)) {
+                if (in_array($countryCode, $excludeArray)) {
                     return true;
-                }
-                else {
+                } else {
                     //return true;
                 }
             }

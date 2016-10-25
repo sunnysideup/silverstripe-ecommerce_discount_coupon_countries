@@ -3,13 +3,15 @@
     "type": "silverstripe-module",
     "description": "Allows you to add silverstripe e-commerce discount vouchers to certain countries",
     "keywords": [
+        "Silverstripe-CMS",
+        "CMS",
+        "Silverstripe",
         "ecommerce",
         "e-commerce",
         "shop",
         "discount coupon",
         "discount",
         "coupon",
-        "silverstripe",        
         "EcommerceCountry",
         "Countries",
         "Country",
@@ -26,7 +28,9 @@
     ],
     "require": {
         "sunnysideup/ecommerce_discount_coupon": "*",
-        "sunnysideup/ecommerce_countries": "*"
+        "sunnysideup/ecommerce_countries": "*",
+        "silverstripe/framework": "~3.1",
+        "silverstripe/cms": "~3.1"
     },
     "extra": {
         "installer-name": "ecommerce_discount_coupon_countries"

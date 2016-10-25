@@ -8,7 +8,6 @@
 
 class DiscountCouponOptionCountriesExtension extends DataExtension
 {
-
     private static $casting = array(
         "CountryDescription" => "Varchar"
     );
@@ -34,22 +33,22 @@ class DiscountCouponOptionCountriesExtension extends DataExtension
 
 
 
-    function getCountryDescription()
+    public function getCountryDescription()
     {
         $returnString = '';
         $includedCountries = $this->owner->IncludedCountries();
         $excludedCountries = $this->owner->ExcludedCountries();
         //first situation: no country information => ALLOW => return NULL to ignore this.
-        if($includedCountries->count() == 0 && $excludedCountries->count() == 0){
+        if ($includedCountries->count() == 0 && $excludedCountries->count() == 0) {
             return _t('DiscountCouponOptionCountriesExtension.AVAILABLE_IN_ALL_COUNTRIES', 'Available in all countries');
         }
 
         //second situation: includes and excludes
-        if($includedCountries->count() > 0 && $excludedCountries->count() > 0){
+        if ($includedCountries->count() > 0 && $excludedCountries->count() > 0) {
             $includeArray = $includedCountries->column('Code');
             $excludeArray = $excludedCountries->column('Code');
-            foreach($includeArray as $key => $countryCode) {
-                if(in_array($countryCode, $excludeArray)) {
+            foreach ($includeArray as $key => $countryCode) {
+                if (in_array($countryCode, $excludeArray)) {
                     unset($includeArray[$key]);
                 }
             }
@@ -59,13 +58,13 @@ class DiscountCouponOptionCountriesExtension extends DataExtension
         }
 
         //third situation: is it included?
-        if($includedCountries->count() > 0){
+        if ($includedCountries->count() > 0) {
             $includeArray = $includedCountries->column('Code');
             return _t('DiscountCouponOptionCountriesExtension.AVAILABLE_IN', 'Available in: ').implode(', ', $includeArray);
         }
 
         //fourth situation: is it excluded?
-        if($excludedCountries->count() > 0){
+        if ($excludedCountries->count() > 0) {
             $excludeArray = $excludedCountries->column('Code');
             return _t('DiscountCouponOptionCountriesExtension.NOT_AVAILABLE_IN', 'Not available in: ').implode(', ', $excludeArray);
         }
